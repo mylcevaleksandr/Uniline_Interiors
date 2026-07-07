@@ -1,12 +1,12 @@
-import logoImage from 'figma:asset/535e8dac5dc2ca0e99ceebb54481b5f9d210f0df.png';
+import logoImage from '../assets/logo-transparent.png';
 
-export function Logo({ className = "h-24 md:h-32" }: { className?: string }) {
+export function Logo({ className = "h-56 md:h-72" }: { className?: string }) {
   return (
     <img 
       src={logoImage} 
       alt="Uniline Carpentry Logo"
-      className={`${className} w-auto max-w-[200px] object-contain`}
-      style={{ maxWidth: '200px' }}
+      className={`${className} w-auto max-w-[400px] object-contain`}
+      style={{ maxWidth: '400px' }}
     />
   );
 }

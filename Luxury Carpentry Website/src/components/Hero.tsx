@@ -1,4 +1,4 @@
-import heroImage from 'figma:asset/97390a4a8e49fd740846084b3e6f99d1cf7ea3f3.png';
+import heroImage from '../assets/97390a4a8e49fd740846084b3e6f99d1cf7ea3f3.png';
 import { Logo } from './Logo';
 import { motion } from 'framer-motion';
 
@@ -30,10 +30,10 @@ export function Hero() {
           className="relative flex flex-col items-center px-4 md:px-16 pt-8 pb-8 border-b border-white/10 w-full"
         >
           <div className="flex flex-col items-center">
-            <Logo className="h-12 md:h-14 mb-4" />
-            <div className="text-white text-base md:text-xl tracking-[0.2em]">
-              UNILINE CARPENTRY
-            </div>
+            <Logo />
+            {/*<div className="text-white text-base md:text-xl tracking-[0.2em]">*/}
+            {/*  UNILINE CARPENTRY*/}
+            {/*</div>*/}
           </div>
           <div className="absolute right-4 md:right-16 top-1/2 -translate-y-1/2 hidden md:flex gap-6 text-white/90 text-sm tracking-wider">
             <a href="#portfolio" className="hover:text-[#c9a050] transition-colors duration-300">PORTFOLIO</a>
