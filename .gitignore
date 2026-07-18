@@ -3,6 +3,7 @@
 # Compiled output
 
 Online_Store/dist
+build/
 /dist
 /tmp
 /out-tsc
