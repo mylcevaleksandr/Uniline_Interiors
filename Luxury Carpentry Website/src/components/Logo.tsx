@@ -1,3 +1,4 @@
+// @ts-ignore
 import logoImage from '../assets/logo-transparent.png';
 
 export function Logo({ className = "h-56 md:h-72" }: { className?: string }) {

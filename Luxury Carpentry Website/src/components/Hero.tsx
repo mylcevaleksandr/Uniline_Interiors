@@ -1,3 +1,4 @@
+// @ts-ignore
 import heroImage from '../assets/97390a4a8e49fd740846084b3e6f99d1cf7ea3f3.png';
 import { Logo } from './Logo';
 import { motion } from 'framer-motion';
