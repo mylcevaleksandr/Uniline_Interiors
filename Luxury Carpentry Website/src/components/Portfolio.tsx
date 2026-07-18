@@ -124,7 +124,7 @@ const portfolioItems = [
     ...combinedItemsWithIds,
 ];
 
-const categories = ['All', 'Bath', 'Closets', 'Fireplace', 'Kitchens', 'Tub', 'Stairs', 'Trim', 'Projects'];
+const categories = ['All', 'Bath', 'Closets', 'Fireplace', 'Kitchens', 'Stairs', 'Trim', 'Projects'];
 const projectSubcategories = ['Commercial', 'Residential'];
 
 export function Portfolio() {
@@ -251,46 +251,3 @@ export function Portfolio() {
         </section>
     );
 }
-
-// {
-//   id: 1,
-//   title: 'Modern Kitchen',
-//   category: 'Kitchens',
-//   description: 'Custom cabinetry with precision detailing',
-//   image: 'https://images.unsplash.com/photo-1609280069678-ab9ef26a0b05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBraXRjaGVuJTIwd29vZHdvcmt8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-// },
-// {
-//   id: 2,
-//   title: 'Bespoke Cabinetry',
-//   category: 'Cabinetry',
-//   description: 'Handcrafted with exceptional quality',
-//   image: 'https://images.unsplash.com/photo-1598628435229-2886b7aa07c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3b29kJTIwZnVybml0dXJlfGVufDF8fHx8MTc2NTIxNDQyOHww&ixlib=rb-4.1.0&q=80&w=1080',
-// },
-// {
-//   id: 3,
-//   title: 'Precision Trim Work',
-//   category: 'Trim',
-//   description: 'High-end finish carpentry',
-//   image: 'https://images.unsplash.com/photo-1762419757271-f85c6c4f6e5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB3b29kJTIwc3RhaXJjYXNlfGVufDF8fHx8MTc2NTMxMjE2Nnww&ixlib=rb-4.1.0&q=80&w=1080',
-// },
-// {
-//   id: 4,
-//   title: 'Custom Cabinetry',
-//   category: 'Cabinetry',
-//   description: 'Tailored storage solutions',
-//   image: 'https://images.unsplash.com/photo-1650615653338-0ec058c99fa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b29kZW4lMjBjYWJpbmV0JTIwY3JhZnRzbWFuc2hpcHxlbnwxfHx8fDE3NjUzMTIxNjV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-// },
-// {
-//   id: 5,
-//   title: 'Architectural Millwork',
-//   category: 'Millwork',
-//   description: 'Bespoke interior woodwork',
-//   image: 'https://images.unsplash.com/photo-1592990379370-f9dab5ff74c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b20lMjB3b29kd29ya2luZyUyMGludGVyaW9yfGVufDF8fHx8MTc2NTMxMjE2NHww&ixlib=rb-4.1.0&q=80&w=1080',
-// },
-// {
-//   id: 6,
-//   title: 'Fine Woodwork',
-//   category: 'Millwork',
-//   description: 'Unparalleled attention to detail',
-//   image: 'https://images.unsplash.com/photo-1588500412605-19fc244f2876?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXJwZW50cnklMjB3b29kd29ya3xlbnwxfHx8fDE3NjUzMTIxNjR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-// },
