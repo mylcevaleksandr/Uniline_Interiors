@@ -1,13 +1,7 @@
 # Ignore everything
 /*
 
-# Except the Luxury Carpentry Website folder
-#!/Luxury Carpentry Website/
+# Except docs and gitignore
 !/docs/
 !/docs/**
 !.gitignore
-
-# Inside Luxury Carpentry Website, ignore everything except build folder
-#/Luxury Carpentry Website/*
-#!/Luxury Carpentry Website/build/
-#!/Luxury Carpentry Website/build/**
