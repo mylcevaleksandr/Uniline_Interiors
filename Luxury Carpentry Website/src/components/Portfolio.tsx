@@ -1,21 +1,15 @@
 import {useState} from 'react';
 import {motion} from 'framer-motion';
 
-
-// Import all images eagerly from the Bath folder
-const bathImages = import.meta.glob('../assets/Bath/*.{png,jpg,jpeg,svg}', {eager: true});
-
 // Import all images eagerly from the Closets folder
 const closetImages = import.meta.glob('../assets/Closets/*.{png,jpg,jpeg,svg}', {eager: true});
 
 // Import all images eagerly from the Fireplace folder
-const fireplaceImages = import.meta.glob('../assets/Fireplace/*.{png,jpg,jpeg,svg}', {eager: true});
+const hardwareImages = import.meta.glob('../assets/Hardware/*.{png,jpg,jpeg,svg}', {eager: true});
 
 // Import all images eagerly from the Kitchens folder
 const kitchenImages = import.meta.glob('../assets/Kitchens/*.{png,jpg,jpeg,svg}', {eager: true});
 
-// Import all images eagerly from the Stairs folder
-const stairImages = import.meta.glob('../assets/Stairs/*.{png,jpg,jpeg,svg}', {eager: true});
 
 // Import all images eagerly from the Trim folder
 const trimImages = import.meta.glob('../assets/Trim/*.{png,jpg,jpeg,svg}', {eager: true});
@@ -24,18 +18,17 @@ function extractImageUrls(images: Record<string, any>): string[] {
     return Object.values(images).map((module: any) => module.default);
 }
 
-const bathItems = extractImageUrls(bathImages).map((url, index) => {
-    return {
-        title: `Fine Woodwork ${index + 1}`,
-        category: 'Bath',
-        projectType: '',
-        description: 'Unparalleled attention to detail',
-        image: url,
-    };
+const closetItems = extractImageUrls(closetImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/kitchen_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
 
-});
-
-const closetItems = extractImageUrls(closetImages).map((url, index) => {
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
     return {
         title: `Custom Cabinetry ${index + 1}`,
         category: 'Closets',
@@ -45,7 +38,17 @@ const closetItems = extractImageUrls(closetImages).map((url, index) => {
     };
 });
 
-const fireplaceItems = extractImageUrls(fireplaceImages).map((url, index) => {
+const hardwareItems = extractImageUrls(hardwareImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/kitchen_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
+
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
     return {
         title: `Modern Fireplace ${index + 1}`,
         category: 'Fireplace',
@@ -55,27 +58,39 @@ const fireplaceItems = extractImageUrls(fireplaceImages).map((url, index) => {
     };
 });
 
-const kitchenItems = extractImageUrls(kitchenImages).map((url, index) => {
-    return {
-        title: `Modern Kitchen ${index + 1}`,
-        category: 'Kitchens',
-        projectType: '',
-        description: 'Custom cabinetry with precision detailing',
-        image: url,
-    };
-});
+const kitchenItems = extractImageUrls(kitchenImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/kitchen_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
 
-const stairItems = extractImageUrls(stairImages).map((url, index) => {
-    return {
-        title: `Architectural Millwork ${index + 1}`,
-        category: 'Stairs',
-        projectType: '',
-        description: 'Handcrafted with exceptional quality',
-        image: url,
-    };
-});
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
+        return {
+            title: `Modern Kitchen ${index + 1}`,
+            category: 'Kitchens',
+            projectType: '',
+            description: 'Custom cabinetry with precision detailing',
+            image: url,
+        };
+    });
+console.log(kitchenItems);
 
-const trimItems = extractImageUrls(trimImages).map((url, index) => {
+
+const trimItems = extractImageUrls(trimImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/kitchen_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
+
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
     return {
         title: `Precision Trim Work ${index + 1}`,
         category: 'Trim',
@@ -85,35 +100,34 @@ const trimItems = extractImageUrls(trimImages).map((url, index) => {
     };
 });
 
-const initialPortfolioItems = [
-    {
-        id: 1,
-        title: 'Luxury Residential Estate',
-        category: 'Residential',
-        projectType: 'Projects',
-        description: 'Complete custom woodwork throughout',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob21lJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    },
-    {
-        id: 2,
-        title: 'Executive Office Build-Out',
-        category: 'Commercial',
-        projectType: 'Projects',
-        description: 'High-end corporate millwork',
-        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBvZmZpY2V8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    }
+const initialPortfolioItems:any = [
+    // {
+    //     id: 1,
+    //     title: 'Luxury Residential Estate',
+    //     category: 'Residential',
+    //     projectType: 'Projects',
+    //     description: 'Complete custom woodwork throughout',
+    //     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob21lJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    // },
+    // {
+    //     id: 2,
+    //     title: 'Executive Office Build-Out',
+    //     category: 'Commercial',
+    //     projectType: 'Projects',
+    //     description: 'High-end corporate millwork',
+    //     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBvZmZpY2V8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    // }
 ];
 
 const combinedItems = [
-    ...bathItems,
     ...closetItems,
-    ...fireplaceItems,
+    ...hardwareItems,
     ...kitchenItems,
-    ...stairItems,
     ...trimItems,
 ];
 
 const startingId = initialPortfolioItems.length + 1;
+
 const combinedItemsWithIds = combinedItems.map((item, index) => ({
     id: startingId + index,
     ...item,
@@ -124,7 +138,7 @@ const portfolioItems = [
     ...combinedItemsWithIds,
 ];
 
-const categories = ['All', 'Bath', 'Closets', 'Fireplace', 'Kitchens', 'Stairs', 'Trim', 'Projects'];
+const categories = ['All', 'Kitchens',  'Closets',  'Trim', 'Hardware'];
 const projectSubcategories = ['Commercial', 'Residential'];
 
 export function Portfolio() {
