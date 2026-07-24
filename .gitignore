@@ -3,9 +3,11 @@
 
 # Except the Luxury Carpentry Website folder
 !/Luxury Carpentry Website/
+!/docs/
+!/docs/**
 !.gitignore
 
 # Inside Luxury Carpentry Website, ignore everything except build folder
 /Luxury Carpentry Website/*
-!/Luxury Carpentry Website/docs/
-!/Luxury Carpentry Website/docs/**
+!/Luxury Carpentry Website/build/
+!/Luxury Carpentry Website/build/**
