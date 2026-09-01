@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion';
+import ExperienceTimer from "./utils/ExperienceTimer";
 
 const partners = [
   { 
-    name: 'Blum Hardware',
-    category: 'Premium Hardware'
+    name: 'Big-D Signature',
+    category: 'Resort Town Luxury Construction'
   },
   { 
-    name: 'Hafele',
-    category: 'Specialty Hardware'
+    name: 'Hibbs Luxury Homes',
+    category: 'Luxury Custom Home Builder'
   },
   { 
-    name: 'Benjamin Moore',
-    category: 'Fine Finishes'
+    name: 'Craig Construction',
+    category: 'PIONEERING CRAFTSMANSHIP of Custom home building'
   },
   { 
     name: 'Exotic Lumber Inc.',
@@ -22,7 +23,7 @@ const partners = [
     category: 'Appliance Partner'
   },
   { 
-    name: 'Toll Brothers',
+    name: 'EDGE Builders',
     category: 'Custom Builders'
   },
   { 
@@ -93,13 +94,10 @@ export function Partners() {
           className="flex flex-wrap justify-center items-center gap-8 pt-16 border-t border-white/10"
           style={{ marginTop: '6rem' }}
         >
-          <div className="flex flex-col items-center">
-            <div className="text-[#c9a050] text-3xl mb-2">15+</div>
-            <div className="text-white/60 text-sm tracking-wider">Years Experience</div>
-          </div>
+          <ExperienceTimer/>
           <div className="h-12 w-px bg-white/10"></div>
           <div className="flex flex-col items-center">
-            <div className="text-[#c9a050] text-3xl mb-2">$5M+</div>
+            <div className="text-[#c9a050] text-3xl mb-2">$1M+</div>
             <div className="text-white/60 text-sm tracking-wider">Projects Completed</div>
           </div>
           <div className="h-12 w-px bg-white/10"></div>
@@ -109,7 +107,7 @@ export function Partners() {
           </div>
           <div className="h-12 w-px bg-white/10"></div>
           <div className="flex flex-col items-center">
-            <div className="text-[#c9a050] text-3xl mb-2">5 Year</div>
+            <div className="text-[#c9a050] text-3xl mb-2">1 Year</div>
             <div className="text-white/60 text-sm tracking-wider">Warranty</div>
           </div>
         </motion.div>

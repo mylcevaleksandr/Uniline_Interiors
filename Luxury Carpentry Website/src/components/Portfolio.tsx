@@ -1,64 +1,94 @@
 import {useState} from 'react';
 import {motion} from 'framer-motion';
+import {PortfolioItem} from "../types/types";
+
+// Import all images eagerly from the Base-Trim folder
+const baseTrimImages = import.meta.glob('../assets/Base-Trim/*.{png,jpg,jpeg,svg}', {eager: true});
+
+// Import all images eagerly from the Bunk-Beds folder
+const bunkBedImages = import.meta.glob('../assets/Bunk-Beds/*.{png,jpg,jpeg,svg}', {eager: true});
 
 // Import all images eagerly from the Closets folder
 const closetImages = import.meta.glob('../assets/Closets/*.{png,jpg,jpeg,svg}', {eager: true});
 
-// Import all images eagerly from the Fireplace folder
+// Import all images eagerly from the Custom-Cabinetry folder
+const customCabinetryImages = import.meta.glob('../assets/Custom-Cabinetry/*.{png,jpg,jpeg,svg}', {eager: true});
+
+// Import all images eagerly from the Custom-Carpentry folder
+const customCarpentryImages = import.meta.glob('../assets/Custom-Carpentry/*.{png,jpg,jpeg,svg}', {eager: true});
+
+// Import all images eagerly from the Hardware folder
 const hardwareImages = import.meta.glob('../assets/Hardware/*.{png,jpg,jpeg,svg}', {eager: true});
-
-// Import all images eagerly from the Kitchens folder
-const kitchenImages = import.meta.glob('../assets/Kitchens/*.{png,jpg,jpeg,svg}', {eager: true});
-
-
-// Import all images eagerly from the Trim folder
-const trimImages = import.meta.glob('../assets/Trim/*.{png,jpg,jpeg,svg}', {eager: true});
 
 function extractImageUrls(images: Record<string, any>): string[] {
     return Object.values(images).map((module: any) => module.default);
 }
 
+const baseTrimItems = extractImageUrls(baseTrimImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/trim_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
+
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
+        return {
+            id: index + 1,
+            title: `Precision Trim Work ${index + 1}`,
+            category: 'Base Trim',
+            projectType: '',
+            description: 'Bespoke Trim Work',
+            image: url,
+        };
+    });
+
+const bunkBedsItems = extractImageUrls(bunkBedImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/bunk_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
+
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
+        return {
+            id: index + 1,
+            title: `Hand Crafted Bunk-Beds ${index + 1}`,
+            category: 'Bunk Beds',
+            projectType: '',
+            description: 'Unique, custom-crafted design',
+            image: url,
+        };
+    });
+
+
 const closetItems = extractImageUrls(closetImages)
     .sort((a, b) => {
         // Extract the number from the filename using regex
         const getNumber = (url: any) => {
-            const match = url.match(/kitchen_(\d+)\.jpg$/);
+            const match = url.match(/closet_(\d+)\.jpg$/);
             return match ? parseInt(match[1], 10) : 0;
         };
 
         return getNumber(a) - getNumber(b);
     })
     .map((url, index) => {
-    return {
-        title: `Custom Cabinetry ${index + 1}`,
-        category: 'Closets',
-        projectType: '',
-        description: 'Tailored storage solutions',
-        image: url
-    };
-});
-
-const hardwareItems = extractImageUrls(hardwareImages)
-    .sort((a, b) => {
-        // Extract the number from the filename using regex
-        const getNumber = (url: any) => {
-            const match = url.match(/kitchen_(\d+)\.jpg$/);
-            return match ? parseInt(match[1], 10) : 0;
+        return {
+            id: index + 1,
+            title: `Custom Closets ${index + 1}`,
+            category: 'Closets',
+            projectType: '',
+            description: 'Tailored storage solutions',
+            image: url
         };
+    });
 
-        return getNumber(a) - getNumber(b);
-    })
-    .map((url, index) => {
-    return {
-        title: `Modern Fireplace ${index + 1}`,
-        category: 'Fireplace',
-        projectType: '',
-        description: 'Custom Fireplace ',
-        image: url,
-    };
-});
-
-const kitchenItems = extractImageUrls(kitchenImages)
+const customCabinetryItems = extractImageUrls(customCabinetryImages)
     .sort((a, b) => {
         // Extract the number from the filename using regex
         const getNumber = (url: any) => {
@@ -70,101 +100,81 @@ const kitchenItems = extractImageUrls(kitchenImages)
     })
     .map((url, index) => {
         return {
-            title: `Modern Kitchen ${index + 1}`,
-            category: 'Kitchens',
+            id: index + 1,
+            title: `Custom Cabinetry ${index + 1}`,
+            category: 'Custom Cabinetry',
             projectType: '',
-            description: 'Custom cabinetry with precision detailing',
+            description: ' High-end cabinetry tailored to your unique needs',
             image: url,
         };
     });
-console.log(kitchenItems);
 
-
-const trimItems = extractImageUrls(trimImages)
+const customCarpentryItems = extractImageUrls(customCarpentryImages)
     .sort((a, b) => {
         // Extract the number from the filename using regex
         const getNumber = (url: any) => {
-            const match = url.match(/kitchen_(\d+)\.jpg$/);
+            const match = url.match(/carpentry_(\d+)\.jpg$/);
             return match ? parseInt(match[1], 10) : 0;
         };
 
         return getNumber(a) - getNumber(b);
     })
     .map((url, index) => {
-    return {
-        title: `Precision Trim Work ${index + 1}`,
-        category: 'Trim',
-        projectType: '',
-        description: 'High-end finish carpentry',
-        image: url,
-    };
-});
+        return {
+            id: index + 1,
+            title: `Custom Carpentry ${index + 1}`,
+            category: 'Custom Carpentry',
+            projectType: '',
+            description: 'Custom carpentry with precision detailing',
+            image: url,
+        };
+    });
 
-const initialPortfolioItems:any = [
-    // {
-    //     id: 1,
-    //     title: 'Luxury Residential Estate',
-    //     category: 'Residential',
-    //     projectType: 'Projects',
-    //     description: 'Complete custom woodwork throughout',
-    //     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob21lJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    // },
-    // {
-    //     id: 2,
-    //     title: 'Executive Office Build-Out',
-    //     category: 'Commercial',
-    //     projectType: 'Projects',
-    //     description: 'High-end corporate millwork',
-    //     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBvZmZpY2V8ZW58MXx8fHwxNzY1MzEyMTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    // }
-];
+const hardwareItems = extractImageUrls(hardwareImages)
+    .sort((a, b) => {
+        // Extract the number from the filename using regex
+        const getNumber = (url: any) => {
+            const match = url.match(/hardware_(\d+)\.jpg$/);
+            return match ? parseInt(match[1], 10) : 0;
+        };
 
-const combinedItems = [
-    ...closetItems,
-    ...hardwareItems,
-    ...kitchenItems,
-    ...trimItems,
-];
+        return getNumber(a) - getNumber(b);
+    })
+    .map((url, index) => {
+        return {
+            id: index + 1,
+            title: `Quality Hardware ${index + 1}`,
+            category: 'Hardware',
+            projectType: '',
+            description: 'Only the best hardware ',
+            image: url,
+        };
+    });
 
-const startingId = initialPortfolioItems.length + 1;
+const categoryItemsMap: Record<string, PortfolioItem[]> = {
+    'Custom Cabinetry': customCabinetryItems,
+    'Custom Carpentry': customCarpentryItems,
+    'Bunk Beds': bunkBedsItems,
+    'Closets': closetItems,
+    'Base Trim': baseTrimItems,
+    'Hardware': hardwareItems,
+};
 
-const combinedItemsWithIds = combinedItems.map((item, index) => ({
-    id: startingId + index,
-    ...item,
-}));
+function getFilteredItems(selectedCategory: string): PortfolioItem[] {
+    return categoryItemsMap[selectedCategory] || null;
+}
 
-const portfolioItems = [
-    ...initialPortfolioItems,
-    ...combinedItemsWithIds,
-];
+const categories = ['Custom Cabinetry', 'Custom Carpentry', 'Bunk Beds', 'Closets', 'Base Trim', 'Hardware'];
 
-const categories = ['All', 'Kitchens',  'Closets',  'Trim', 'Hardware'];
-const projectSubcategories = ['Commercial', 'Residential'];
 
 export function Portfolio() {
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState('Custom Cabinetry');
 
     const handleCategoryClick = (category: string) => {
         setSelectedCategory(category);
-        if (category !== 'Projects') {
-            setSelectedSubcategory(null);
-        }
     };
 
-    const filteredItems = (() => {
-        if (selectedCategory === 'All') {
-            return portfolioItems;
-        }
-        if (selectedCategory === 'Projects') {
-            if (selectedSubcategory) {
-                return portfolioItems.filter(item => item.category === selectedSubcategory);
-            }
-            return portfolioItems.filter(item => item.projectType === 'Projects');
-        }
-        return portfolioItems.filter(item => item.category === selectedCategory);
-    })();
-
+    const foundItems: PortfolioItem[] = getFilteredItems(selectedCategory) || [];
     return (
         <section id="portfolio" className="py-32 bg-[#0a0a0a]" style={{width: '100%', margin: '0 auto'}}>
             <div style={{maxWidth: '1280px', margin: '0 auto', paddingLeft: '2rem', paddingRight: '2rem'}}>
@@ -209,31 +219,14 @@ export function Portfolio() {
                             {category}
                         </button>
                     ))}
-                    {selectedCategory === 'Projects' && (
-                        <div className="flex gap-6">
-                            {projectSubcategories.map((subcategory) => (
-                                <button
-                                    key={subcategory}
-                                    onClick={() => setSelectedSubcategory(subcategory)}
-                                    className={`px-6 py-3 text-sm tracking-wider transition-all duration-500 border-2 rounded-full ${
-                                        selectedSubcategory === subcategory
-                                            ? 'border-[#c9a050] text-white bg-[#c9a050]/10'
-                                            : 'border-white/20 text-white/60 hover:border-[#c9a050]/50 hover:text-white/90'
-                                    }`}
-                                >
-                                    {subcategory}
-                                </button>
-                            ))}
-                        </div>
-                    )}
                 </motion.div>
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                    {filteredItems.length === 0 ? (
+                    {foundItems.length === 0 ? (
                         <p className="text-white text-center col-span-full">No items found for this category.</p>
                     ) : (
-                        filteredItems.map((item, index) => (
+                        foundItems.map((item, index) => (
                             <motion.div
                                 key={item.id}
                                 initial={{opacity: 0, y: 50}}

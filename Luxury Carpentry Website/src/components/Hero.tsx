@@ -9,7 +9,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#0a0a0a]">
+    <section id="top" className="relative w-full overflow-hidden bg-[#0a0a0a]">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <img
@@ -32,11 +32,8 @@ export function Hero() {
         >
           <div className="flex flex-col items-center">
             <Logo />
-            {/*<div className="text-white text-base md:text-xl tracking-[0.2em]">*/}
-            {/*  UNILINE CARPENTRY*/}
-            {/*</div>*/}
           </div>
-          <div className="absolute right-4 md:right-16 top-1/2 -translate-y-1/2 hidden md:flex gap-6 text-white/90 text-sm tracking-wider">
+          <div className="absolute right-4 md:right-16 flex gap-6 text-white/90 text-sm tracking-wider">
             <a href="#portfolio" className="hover:text-[#c9a050] transition-colors duration-300">PORTFOLIO</a>
             <a href="#contact" className="hover:text-[#c9a050] transition-colors duration-300">CONTACT</a>
           </div>
@@ -56,7 +53,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-white/80 mb-16 max-w-2xl text-lg"
+            className="text-white/80 custom-margin  max-w-2xl text-lg"
           >
             High-end finish carpentry, custom cabinetry, and bespoke woodwork crafted with unparalleled attention to detail for discerning homeowners
           </motion.p>
@@ -67,23 +64,25 @@ export function Hero() {
             onClick={scrollToPortfolio}
             className="relative group overflow-hidden"
           >
-            <div className="relative z-10 px-12 py-5 border border-[#c9a050] text-[#c9a050] transition-colors duration-300 group-hover:text-white">
+            <div className="relative z-10 px-12 small-screen py-5 overflow-hidden border border-[#c9a050] text-[#c9a050] transition-colors duration-300 group-hover:text-white">
               EXPLORE COLLECTION
             </div>
-            <div className="absolute inset-0 bg-[#c9a050] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            <div className="absolute inset-0 bg-[#c9a050] transform scale-x-0 overflow-hidden group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           </motion.button>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="pb-16 flex flex-col items-center gap-4 w-full"
-        >
-          <div className="text-white/60 text-xs tracking-widest">SCROLL</div>
-          <div className="w-px h-16 bg-gradient-to-b from-white/40 to-transparent"></div>
-        </motion.div>
+        <div className="custom-margin">
+          <motion.div
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              transition={{duration: 3, delay: 2}}
+              className="pb-16 flex flex-col items-center gap-4 w-full"
+          >
+            <div className="text-white/60 text-xs tracking-widest">SCROLL</div>
+            <div className="w-px h-16 bg-gradient-to-b from-white/40 to-transparent"></div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

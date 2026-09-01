@@ -10,11 +10,12 @@
   --color-text-muted: #8a8a8a;
 }
 
-* {
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 html {
   width: 100%;
@@ -92,3 +93,8 @@ button {
     font-size: 0.95rem;
   }
 }
+ @media (max-width: 375px) {
+   .small-screen{
+     padding:10px 20px;
+   }
+ }
